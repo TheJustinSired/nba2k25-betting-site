@@ -1,7 +1,12 @@
 let bets = JSON.parse(localStorage.getItem("bets")) || [];
 let winnings = JSON.parse(localStorage.getItem("winnings")) || { andon: 0, justin: 0 };
 
-// Update bets table
+// Toggle Dark Mode
+document.getElementById("darkModeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+
+// Update Bets Table
 function updateTable() {
     let table = document.getElementById("bets-table");
     table.innerHTML = "";
@@ -16,7 +21,7 @@ function updateTable() {
     });
 }
 
-// Add new bet
+// Add New Bet
 function addBet() {
     let matchup = document.getElementById("matchup").value;
     let andonBet = document.getElementById("andonBet").value;
@@ -29,7 +34,7 @@ function addBet() {
     }
 }
 
-// Update winnings
+// Update Results
 function updateResults() {
     let winner = document.getElementById("winner").value;
     bets.forEach(bet => {
@@ -40,40 +45,26 @@ function updateResults() {
         }
     });
     localStorage.setItem("winnings", JSON.stringify(winnings));
-    updateWinningsDisplay();
+    document.getElementById("andon-winnings").textContent = winnings.andon;
+    document.getElementById("justin-winnings").textContent = winnings.justin;
 }
 
-// Reset winnings
-function resetWinnings() {
-    winnings = { andon: 0, justin: 0 };
-    localStorage.setItem("winnings", JSON.stringify(winnings));
-    updateWinningsDisplay();
-}
-
-// Reset bets
+// Reset Bets
 function resetBets() {
     bets = [];
     localStorage.setItem("bets", JSON.stringify(bets));
     updateTable();
 }
 
-// Update winnings display
-function updateWinningsDisplay() {
-    document.getElementById("andon-winnings").textContent = winnings.andon;
-    document.getElementById("justin-winnings").textContent = winnings.justin;
+// Reset Winnings
+function resetWinnings() {
+    winnings = { andon: 0, justin: 0 };
+    localStorage.setItem("winnings", JSON.stringify(winnings));
+    document.getElementById("andon-winnings").textContent = 0;
+    document.getElementById("justin-winnings").textContent = 0;
 }
 
-// Dark Mode Toggle
-document.getElementById("dark-mode-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-});
-
-// Load Dark Mode preference
-if (localStorage.getItem("darkMode") === "true") {
-    document.body.classList.add("dark-mode");
-}
-
-// Initialize page
+// Load Data
 updateTable();
-updateWinningsDisplay();
+document.getElementById("andon-winnings").textContent = winnings.andon;
+document.getElementById("justin-winnings").textContent = winnings.justin;
