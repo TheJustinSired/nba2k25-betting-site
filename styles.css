@@ -1,132 +1,98 @@
 /* General Styles */
 body {
-    font-family: 'Orbitron', sans-serif;
-    background: #0d0d0d;
-    color: #fff;
-    text-align: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
     margin: 0;
     padding: 0;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* Navbar */
-.navbar {
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+header {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-    border-bottom: 2px solid rgba(0, 255, 255, 0.5);
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #800000; /* CIBC-style red */
+    color: white;
 }
 
 .logo {
-    height: 50px;
-    width: auto;
-    margin-left: 10px;
+    width: 150px;
+    height: auto;
 }
 
-/* Neon Heading */
-.neon-text {
-    font-size: 2.5em;
-    color: #0ff;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #00ffff;
-}
-
-/* Main Container */
 .container {
-    width: 85%;
-    margin: 40px auto;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
 }
 
-/* Table */
+body.dark-mode .container {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
+}
+
+table, th, td {
+    border: 1px solid black;
 }
 
 th, td {
-    padding: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px;
     text-align: center;
 }
 
-th {
-    background-color: rgba(0, 255, 255, 0.3);
-    color: #000;
+/* Form Styles */
+.form-container {
+    margin-top: 20px;
 }
 
-/* Inputs */
-input {
-    padding: 12px;
-    margin: 8px;
-    width: 220px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    text-align: center;
+input, button {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* Buttons */
 button {
-    padding: 12px 18px;
-    background-color: #00ffff;
-    color: black;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
+    background-color: #800000; /* CIBC-style red */
+    color: white;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    border: none;
+    padding: 10px 15px;
+    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #009999;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    background-color: #660000;
 }
 
-/* Reset Buttons */
-.reset-button {
-    background-color: #ff4d4d;
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+/* Dark Mode Toggle */
+#dark-mode-toggle {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.reset-button:hover {
-    background-color: #cc0000;
-    box-shadow: 0 0 20px rgba(255, 77, 77, 0.7);
-}
-
-/* Leaderboard */
-.leaderboard {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 2px 5px rgba(0, 255, 255, 0.3);
-}
-
-/* Animations */
-@keyframes glow {
-    0% { text-shadow: 0 0 10px #0ff; }
-    50% { text-shadow: 0 0 20px #0ff, 0 0 40px #00ffff; }
-    100% { text-shadow: 0 0 10px #0ff; }
-}
-
-.neon-text {
-    animation: glow 2s infinite alternate;
+body.dark-mode #dark-mode-toggle {
+    background-color: #ccc;
+    color: black;
 }
