@@ -3,130 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA 2K25 Tournament Bank</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            background-color: #0a0a0a;
-            color: #fff;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin: 20px 0;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px cyan, 0 0 20px cyan;
-        }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: auto;
-            background: rgba(25, 25, 25, 0.95);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px cyan;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        table, th, td {
-            border: 2px solid cyan;
-        }
-        th, td {
-            padding: 15px;
-            text-align: center;
-        }
-        th {
-            background: cyan;
-            color: #000;
-            font-size: 1.2rem;
-        }
-        td {
-            font-size: 1.1rem;
-        }
-        .form-container {
-            margin-top: 20px;
-        }
-        input, button {
-            padding: 12px;
-            margin: 8px;
-            border-radius: 8px;
-            border: none;
-            font-size: 1rem;
-        }
-        input {
-            width: 70%;
-            background: #222;
-            color: cyan;
-            text-align: center;
-        }
-        button {
-            background: cyan;
-            color: black;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        button:hover {
-            background: black;
-            color: cyan;
-            border: 2px solid cyan;
-        }
-        .leaderboard {
-            margin-top: 20px;
-            padding: 15px;
-            background: #111;
-            border-radius: 10px;
-            box-shadow: 0 0 10px cyan;
-        }
-        .leaderboard p {
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
-        .reset-btn {
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-            font-size: 1.2rem;
-        }
-        .reset-winnings {
-            background: red;
-            color: white;
-        }
-        .reset-winnings:hover {
-            background: white;
-            color: red;
-            border: 2px solid red;
-        }
-        .reset-bets {
-            background: orange;
-            color: white;
-        }
-        .reset-bets:hover {
-            background: white;
-            color: orange;
-            border: 2px solid orange;
-        }
-    </style>
+    <title>FNBA Financial</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <h1>NBA 2K25 Tournament Bank</h1>
-    
+    <div class="navbar">
+        <img src="logo.png" alt="FNBA Financial Logo" class="logo">
+    </div>
+
     <div class="container">
-        <h2>🏀 Current Bets</h2>
+        <h2>Current Bets</h2>
         <table>
             <thead>
                 <tr>
@@ -136,95 +23,33 @@
                 </tr>
             </thead>
             <tbody id="bets-table">
-                <!-- Bets will be added here dynamically -->
+                <!-- Bets will be added dynamically -->
             </tbody>
         </table>
 
         <div class="form-container">
-            <h2>💰 Enter New Bet</h2>
+            <h2>Enter New Bet</h2>
             <input type="text" id="matchup" placeholder="Kings vs Nets">
             <input type="text" id="andonBet" placeholder="Andon's Bet">
             <input type="text" id="justinBet" placeholder="Justin's Bet">
             <button onclick="addBet()">Add Bet</button>
         </div>
 
-        <h2>🏆 Enter Game Results</h2>
+        <h2>Enter Game Results</h2>
         <input type="text" id="winner" placeholder="Winning Team">
         <button onclick="updateResults()">Update Results</button>
 
         <div class="leaderboard">
-            <h2>🏦 Leaderboard</h2>
+            <h2>Leaderboard</h2>
             <p>Andon's Winnings: $<span id="andon-winnings">0</span></p>
             <p>Justin's Winnings: $<span id="justin-winnings">0</span></p>
         </div>
 
-        <button class="reset-btn reset-winnings" onclick="resetWinnings()">Reset Winnings</button>
-        <button class="reset-btn reset-bets" onclick="resetBets()">Reset Bets</button>
+        <button class="reset-button" onclick="resetBets()">Reset Bets</button>
+        <button class="reset-button" onclick="resetWinnings()">Reset Winnings</button>
     </div>
 
-    <script>
-        let bets = JSON.parse(localStorage.getItem("bets")) || [];
-        let winnings = JSON.parse(localStorage.getItem("winnings")) || { andon: 0, justin: 0 };
-
-        function updateTable() {
-            let table = document.getElementById("bets-table");
-            table.innerHTML = "";
-            bets.forEach((bet, index) => {
-                table.innerHTML += `
-                    <tr>
-                        <td>${bet.matchup}</td>
-                        <td>${bet.andon}</td>
-                        <td>${bet.justin}</td>
-                    </tr>
-                `;
-            });
-        }
-
-        function addBet() {
-            let matchup = document.getElementById("matchup").value;
-            let andonBet = document.getElementById("andonBet").value;
-            let justinBet = document.getElementById("justinBet").value;
-
-            if (matchup && andonBet && justinBet) {
-                bets.push({ matchup, andon: andonBet, justin: justinBet });
-                localStorage.setItem("bets", JSON.stringify(bets));
-                updateTable();
-            }
-        }
-
-        function updateResults() {
-            let winner = document.getElementById("winner").value;
-            bets.forEach(bet => {
-                if (bet.andon === winner) {
-                    winnings.andon += 100;
-                } else if (bet.justin === winner) {
-                    winnings.justin += 100;
-                }
-            });
-            localStorage.setItem("winnings", JSON.stringify(winnings));
-            updateWinningsDisplay();
-        }
-
-        function resetWinnings() {
-            winnings = { andon: 0, justin: 0 };
-            localStorage.setItem("winnings", JSON.stringify(winnings));
-            updateWinningsDisplay();
-        }
-
-        function resetBets() {
-            bets = [];
-            localStorage.setItem("bets", JSON.stringify(bets));
-            updateTable();
-        }
-
-        function updateWinningsDisplay() {
-            document.getElementById("andon-winnings").textContent = winnings.andon;
-            document.getElementById("justin-winnings").textContent = winnings.justin;
-        }
-
-        updateTable();
-        updateWinningsDisplay();
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
