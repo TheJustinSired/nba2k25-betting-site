@@ -154,4 +154,77 @@
 
         <div class="leaderboard">
             <h2>🏦 Leaderboard</h2>
-            <p
+            <p>Andon's Winnings: $<span id="andon-winnings">0</span></p>
+            <p>Justin's Winnings: $<span id="justin-winnings">0</span></p>
+        </div>
+
+        <button class="reset-btn reset-winnings" onclick="resetWinnings()">Reset Winnings</button>
+        <button class="reset-btn reset-bets" onclick="resetBets()">Reset Bets</button>
+    </div>
+
+    <script>
+        let bets = JSON.parse(localStorage.getItem("bets")) || [];
+        let winnings = JSON.parse(localStorage.getItem("winnings")) || { andon: 0, justin: 0 };
+
+        function updateTable() {
+            let table = document.getElementById("bets-table");
+            table.innerHTML = "";
+            bets.forEach((bet, index) => {
+                table.innerHTML += `
+                    <tr>
+                        <td>${bet.matchup}</td>
+                        <td>${bet.andon}</td>
+                        <td>${bet.justin}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        function addBet() {
+            let matchup = document.getElementById("matchup").value;
+            let andonBet = document.getElementById("andonBet").value;
+            let justinBet = document.getElementById("justinBet").value;
+
+            if (matchup && andonBet && justinBet) {
+                bets.push({ matchup, andon: andonBet, justin: justinBet });
+                localStorage.setItem("bets", JSON.stringify(bets));
+                updateTable();
+            }
+        }
+
+        function updateResults() {
+            let winner = document.getElementById("winner").value;
+            bets.forEach(bet => {
+                if (bet.andon === winner) {
+                    winnings.andon += 100;
+                } else if (bet.justin === winner) {
+                    winnings.justin += 100;
+                }
+            });
+            localStorage.setItem("winnings", JSON.stringify(winnings));
+            updateWinningsDisplay();
+        }
+
+        function resetWinnings() {
+            winnings = { andon: 0, justin: 0 };
+            localStorage.setItem("winnings", JSON.stringify(winnings));
+            updateWinningsDisplay();
+        }
+
+        function resetBets() {
+            bets = [];
+            localStorage.setItem("bets", JSON.stringify(bets));
+            updateTable();
+        }
+
+        function updateWinningsDisplay() {
+            document.getElementById("andon-winnings").textContent = winnings.andon;
+            document.getElementById("justin-winnings").textContent = winnings.justin;
+        }
+
+        updateTable();
+        updateWinningsDisplay();
+    </script>
+
+</body>
+</html>
