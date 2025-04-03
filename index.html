@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FNBA Financial</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -13,6 +14,8 @@
     </div>
 
     <div class="container">
+        <h1>FNBA Financial</h1>
+        
         <h2>Current Bets</h2>
         <table>
             <thead>
@@ -45,8 +48,10 @@
             <p>Justin's Winnings: $<span id="justin-winnings">0</span></p>
         </div>
 
-        <button class="reset-button" onclick="resetBets()">Reset Bets</button>
-        <button class="reset-button" onclick="resetWinnings()">Reset Winnings</button>
+        <div class="buttons">
+            <button class="reset-button" onclick="resetBets()">Reset Bets</button>
+            <button class="reset-button" onclick="resetWinnings()">Reset Winnings</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
