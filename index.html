@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FNBA Financial</title>
+    <title>NBA 2K25 Tournament Betting</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <header>
-        <img src="logo.png" alt="FNBA Financial Logo" class="logo">
-        <h1>FNBA Financial</h1>
+        <img src="logo.png" alt="FNBA Logo" class="logo">  
         <button id="dark-mode-toggle">Dark Mode</button>
     </header>
 
-    <main class="container">
+    <div class="container">
         <h2>Current Bets</h2>
         <table>
             <thead>
@@ -24,14 +23,12 @@
                     <th>Justin's Bet</th>
                 </tr>
             </thead>
-            <tbody id="bets-table">
-                <!-- Bets will be added here dynamically -->
-            </tbody>
+            <tbody id="bets-table"></tbody>
         </table>
-        
+
         <div class="form-container">
             <h2>Enter New Bet</h2>
-            <input type="text" id="matchup" placeholder="Matchup">
+            <input type="text" id="matchup" placeholder="Kings vs Nets">
             <input type="text" id="andonBet" placeholder="Andon's Bet">
             <input type="text" id="justinBet" placeholder="Justin's Bet">
             <button onclick="addBet()">Add Bet</button>
@@ -44,12 +41,8 @@
         <h2>Leaderboard</h2>
         <p>Andon's Winnings: $<span id="andon-winnings">0</span></p>
         <p>Justin's Winnings: $<span id="justin-winnings">0</span></p>
-
-        <button onclick="resetWinnings()">Reset Winnings</button>
-        <button onclick="resetBets()">Reset Bets</button>
-    </main>
+    </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
