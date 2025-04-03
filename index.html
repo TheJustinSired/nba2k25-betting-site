@@ -77,60 +77,10 @@
         <h2>Leaderboard</h2>
         <p>Andon's Winnings: $<span id="andon-winnings">0</span></p>
         <p>Justin's Winnings: $<span id="justin-winnings">0</span></p>
+
+        <!-- Reset Button -->
+        <button onclick="resetWinnings()">Reset Winnings</button>
     </div>
 
     <script>
         let bets = JSON.parse(localStorage.getItem("bets")) || [];
-        let winnings = JSON.parse(localStorage.getItem("winnings")) || { andon: 0, justin: 0 };
-
-        function updateTable() {
-            let table = document.getElementById("bets-table");
-            table.innerHTML = "";
-            bets.forEach((bet, index) => {
-                table.innerHTML += `
-                    <tr>
-                        <td>${bet.matchup}</td>
-                        <td>${bet.andon}</td>
-                        <td>${bet.justin}</td>
-                    </tr>
-                `;
-            });
-        }
-
-        function addBet() {
-            let matchup = document.getElementById("matchup").value;
-            let andonBet = document.getElementById("andonBet").value;
-            let justinBet = document.getElementById("justinBet").value;
-
-            if (matchup && andonBet && justinBet) {
-                bets.push({ matchup, andon: andonBet, justin: justinBet });
-                localStorage.setItem("bets", JSON.stringify(bets));
-                updateTable();
-            }
-        }
-
-        function updateResults() {
-            let winner = document.getElementById("winner").value;
-            bets.forEach(bet => {
-                if (bet.andon === winner) {
-                    winnings.andon += 100;
-                } else if (bet.justin === winner) {
-                    winnings.justin += 100;
-                }
-            });
-            localStorage.setItem("winnings", JSON.stringify(winnings));
-            document.getElementById("andon-winnings").textContent = winnings.andon;
-            document.getElementById("justin-winnings").textContent = winnings.justin;
-        }
-
-        function updateWinningsDisplay() {
-            document.getElementById("andon-winnings").textContent = winnings.andon;
-            document.getElementById("justin-winnings").textContent = winnings.justin;
-        }
-
-        updateTable();
-        updateWinningsDisplay();
-    </script>
-
-</body>
-</html>
