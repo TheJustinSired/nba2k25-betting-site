@@ -1,61 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
     color: #333;
     margin: 0;
     padding: 0;
-    transition: background 0.3s, color 0.3s;
 }
 
-/* Dark Mode */
-body.dark-mode {
-    background-color: #121212;
-    color: #fff;
+h1 {
+    color: #ff6600;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-top: 20px;
 }
 
-/* Header */
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 20px;
-    background-color: #800000; /* CIBC-style red */
-    color: white;
+    background: #222;
+    padding: 15px;
 }
 
-/* Logo */
 .logo {
-    width: 100px;
+    width: 120px;
     height: auto;
 }
 
-/* Container */
+#darkModeToggle {
+    padding: 10px 15px;
+    background: orange;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 .container {
-    width: 80%;
+    width: 90%;
+    max-width: 800px;
     margin: auto;
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s;
 }
 
-body.dark-mode .container {
-    background: #1e1e1e;
-    color: #fff;
-}
-
-/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background: #f8f8f8;
 }
 
 table, th, td {
-    border: 1px solid black;
+    border: 2px solid #ff6600;
 }
 
 th, td {
@@ -63,7 +66,6 @@ th, td {
     text-align: center;
 }
 
-/* Form Styles */
 .form-container {
     margin-top: 20px;
 }
@@ -71,32 +73,36 @@ th, td {
 input, button {
     padding: 10px;
     margin: 5px;
-    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 button {
-    background-color: #800000; /* CIBC-style red */
-    color: white;
     cursor: pointer;
+    background: #ff6600;
     border: none;
+    color: white;
+    font-size: 16px;
     padding: 10px 15px;
-    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #660000;
+    background: #cc5500;
 }
 
-/* Dark Mode Toggle */
-#dark-mode-toggle {
-    background-color: #333;
+/* Dark Mode */
+.dark-mode {
+    background: #222;
     color: white;
-    padding: 10px;
-    border-radius: 5px;
 }
 
-body.dark-mode #dark-mode-toggle {
-    background-color: #ccc;
-    color: black;
+.dark-mode .container {
+    background: #333;
+}
+
+.dark-mode table {
+    background: #444;
+}
+
+.dark-mode button {
+    background: orange;
 }
