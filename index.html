@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA 2K25 Betting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>NBA 2K25 Tournament Betting</h1>
+        <button id="toggle-mode">Dark Mode</button>
+    </header>
+
+    <main>
+        <section id="tournament">
+            <h2>Current Tournament</h2>
+            <div id="matchups"></div>
+        </section>
+
+        <section id="bets">
+            <h2>Bets</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Matchup</th>
+                        <th>Andon's Bet</th>
+                        <th>Justin's Bet</th>
+                        <th>Winner</th>
+                    </tr>
+                </thead>
+                <tbody id="bet-list"></tbody>
+            </table>
+        </section>
+
+        <section id="leaderboard">
+            <h2>Leaderboard</h2>
+            <p>Andon's Total Winnings: $<span id="andon-winnings">0</span></p>
+            <p>Justin's Total Winnings: $<span id="justin-winnings">0</span></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
