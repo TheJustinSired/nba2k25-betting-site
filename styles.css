@@ -16,7 +16,7 @@ header {
 }
 
 .logo {
-    width: 150px;
+    width: 120px; /* Original size restored */
 }
 
 nav ul {
@@ -58,17 +58,6 @@ nav ul li a {
     border-radius: 10px;
     width: 250px;
     text-align: left;
-}
-
-.send-money {
-    background-color: #ffb100;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    color: black;
-    border-radius: 5px;
 }
 
 /* Betting Layout */
