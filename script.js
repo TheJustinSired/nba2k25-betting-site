@@ -39,15 +39,16 @@ function updateBalances() {
 
 // NBA Team Stats
 const nbaStats = {
-    Lakers: { wins: 45, losses: 30 },
-    Celtics: { wins: 50, losses: 25 },
-    Warriors: { wins: 40, losses: 35 },
-    Bulls: { wins: 38, losses: 37 },
+    "Atlanta Hawks": { wins: 35, losses: 45 },
+    "Boston Celtics": { wins: 55, losses: 25 },
+    "Brooklyn Nets": { wins: 40, losses: 40 },
+    "Charlotte Hornets": { wins: 30, losses: 50 },
+    // Add all teams here...
 };
 
 function updateTeamStats() {
     let selectedTeam = document.getElementById("teamSelect").value;
-    if (selectedTeam) {
+    if (selectedTeam && nbaStats[selectedTeam]) {
         document.getElementById("teamName").textContent = selectedTeam;
         document.getElementById("wins").textContent = nbaStats[selectedTeam].wins;
         document.getElementById("losses").textContent = nbaStats[selectedTeam].losses;
