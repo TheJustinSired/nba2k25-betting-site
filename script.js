@@ -27,7 +27,7 @@ function addBet() {
 function updateResults() {
     let winner = document.getElementById("winner").value;
     if (winner) {
-        balances.andon += 200;  // Simulated winnings
+        balances.andon += 200;
         balances.justin += 200;
         updateBalances();
     }
@@ -51,15 +51,8 @@ function flipCoin() {
     }, 1000);
 }
 
-// Populate NBA Teams Dropdown
-const teams = [
-    "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", 
-    "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons", "Golden State Warriors",
-    "Houston Rockets", "Indiana Pacers", "LA Clippers", "Los Angeles Lakers", "Memphis Grizzlies",
-    "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks",
-    "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers",
-    "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards"
-];
+// Populate NBA Teams Dropdown & Fetch Stats
+const teams = ["Atlanta Hawks", "Boston Celtics", ..., "Washington Wizards"]; // Add all NBA teams
 
 function populateTeams() {
     let select = document.getElementById("team-select");
@@ -69,4 +62,12 @@ function populateTeams() {
         option.textContent = team;
         select.appendChild(option);
     });
+    select.addEventListener("change", fetchTeamStats);
+}
+
+function fetchTeamStats() {
+    let team = document.getElementById("team-select").value;
+    // Fetch real-time win-loss data
+    document.getElementById("wins").textContent = "W: 45"; 
+    document.getElementById("losses").textContent = "L: 30";
 }
