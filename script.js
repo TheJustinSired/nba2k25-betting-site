@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     showTab('accounts');
+    populateTeamDropdown();
 });
 
 function showTab(tabName) {
@@ -26,7 +27,7 @@ function addBet() {
 function updateResults() {
     let winner = document.getElementById("winner").value;
     if (winner) {
-        balances.andon += 200;
+        balances.andon += 200;  
         balances.justin += 200;
         updateBalances();
     }
@@ -37,20 +38,43 @@ function updateBalances() {
     document.getElementById("justin-balance").textContent = balances.justin;
 }
 
-// NBA Team Stats
-const nbaStats = {
-    "Atlanta Hawks": { wins: 35, losses: 45 },
-    "Boston Celtics": { wins: 55, losses: 25 },
-    "Brooklyn Nets": { wins: 40, losses: 40 },
-    "Charlotte Hornets": { wins: 30, losses: 50 },
-    // Add all teams here...
+// Coin Flip
+function flipCoin() {
+    let coin = document.getElementById("coin");
+    let resultText = document.getElementById("coinResult");
+
+    resultText.textContent = "";
+    coin.style.animation = "flip 1s ease-in-out";
+
+    setTimeout(() => {
+        let result = Math.random() < 0.5 ? "Heads" : "Tails";
+        resultText.textContent = `Result: ${result}`;
+        coin.style.animation = "none";
+    }, 1000);
+}
+
+// Stats (Win/Loss)
+const teams = {
+    "Los Angeles Lakers": { wins: 55, losses: 27 },
+    "Boston Celtics": { wins: 60, losses: 22 },
+    "Chicago Bulls": { wins: 48, losses: 34 },
+    "Golden State Warriors": { wins: 52, losses: 30 }
 };
 
-function updateTeamStats() {
+function populateTeamDropdown() {
+    let teamSelect = document.getElementById("teamSelect");
+    Object.keys(teams).forEach(team => {
+        let option = document.createElement("option");
+        option.value = team;
+        option.textContent = team;
+        teamSelect.appendChild(option);
+    });
+}
+
+function updateStats() {
     let selectedTeam = document.getElementById("teamSelect").value;
-    if (selectedTeam && nbaStats[selectedTeam]) {
-        document.getElementById("teamName").textContent = selectedTeam;
-        document.getElementById("wins").textContent = nbaStats[selectedTeam].wins;
-        document.getElementById("losses").textContent = nbaStats[selectedTeam].losses;
+    if (selectedTeam) {
+        document.getElementById("teamWins").textContent = teams[selectedTeam].wins;
+        document.getElementById("teamLosses").textContent = teams[selectedTeam].losses;
     }
 }
