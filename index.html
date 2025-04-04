@@ -20,53 +20,57 @@
     </header>
 
     <main>
-        <!-- Accounts Section -->
+        <!-- ACCOUNTS TAB -->
         <section id="accounts" class="tab-content">
-            <h2>Account Balances</h2>
-            <div class="account-card">
-                <h3>Andon</h3>
-                <p>Account #: 26366</p>
-                <p>Balance: $<span id="andon-balance">1000</span></p>
+            <h2>Account Overview</h2>
+            <div class="credit-card">
+                <div class="card-info">
+                    <h3>FNBA FINANCIAL</h3>
+                    <p class="card-number">**** **** **** 1234</p>
+                    <p>Cardholder: <strong>Andon</strong></p>
+                    <p>Balance: $<span id="andon-balance">1000</span></p>
+                    <p>Exp: 12/28 | CVV: ***</p>
+                </div>
             </div>
-            <div class="account-card">
-                <h3>Justin</h3>
-                <p>Account #: 587846</p>
-                <p>Balance: $<span id="justin-balance">1000</span></p>
+            <div class="credit-card">
+                <div class="card-info">
+                    <h3>FNBA FINANCIAL</h3>
+                    <p class="card-number">**** **** **** 5678</p>
+                    <p>Cardholder: <strong>Justin</strong></p>
+                    <p>Balance: $<span id="justin-balance">1000</span></p>
+                    <p>Exp: 07/30 | CVV: ***</p>
+                </div>
             </div>
         </section>
 
-        <!-- Betting Section -->
+        <!-- BETTING TAB -->
         <section id="betting" class="tab-content">
-            <h2>Betting</h2>
+            <h2>Place Your Bets</h2>
             <input type="text" id="matchup" placeholder="Matchup">
             <input type="text" id="andonBet" placeholder="Andon's Bet">
             <input type="text" id="justinBet" placeholder="Justin's Bet">
             <button onclick="addBet()">Place Bet</button>
+
             <h3>Game Results</h3>
             <input type="text" id="winner" placeholder="Winning Team">
             <button onclick="updateResults()">Update Results</button>
 
             <h3>Coin Flip</h3>
-            <button onclick="flipCoin()">Flip Coin</button>
-            <div class="coin-container">
-                <div id="coin" class="coin">
-                    <div class="heads"></div>
-                    <div class="tails"></div>
-                </div>
+            <div id="coin-container">
+                <div id="coin" class="coin"></div>
             </div>
+            <button onclick="flipCoin()">Flip Coin</button>
             <p id="coin-result"></p>
         </section>
 
-        <!-- Stats Section -->
+        <!-- STATS TAB -->
         <section id="stats" class="tab-content">
             <h2>NBA Team Stats</h2>
-            <label for="team-select">Select Team:</label>
-            <select id="team-select"></select>
-            <div id="team-stats" class="scoreboard">
-                <div class="team-name">Team Name</div>
-                <div class="score-box">
-                    <span id="wins">W: 0</span> | <span id="losses">L: 0</span>
-                </div>
+            <label for="team-dropdown">Select a Team:</label>
+            <select id="team-dropdown"></select>
+            <div id="scoreboard">
+                <h3 id="selected-team">-</h3>
+                <p>Wins: <span id="wins">0</span> | Losses: <span id="losses">0</span></p>
             </div>
         </section>
     </main>
