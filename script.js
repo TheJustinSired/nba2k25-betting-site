@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     showTab('accounts');
-    populateTeamDropdown();
+    populateTeams();
 });
 
 function showTab(tabName) {
@@ -27,7 +27,7 @@ function addBet() {
 function updateResults() {
     let winner = document.getElementById("winner").value;
     if (winner) {
-        balances.andon += 200;  
+        balances.andon += 200;  // Simulated winnings
         balances.justin += 200;
         updateBalances();
     }
@@ -41,40 +41,32 @@ function updateBalances() {
 // Coin Flip
 function flipCoin() {
     let coin = document.getElementById("coin");
-    let resultText = document.getElementById("coinResult");
-
-    resultText.textContent = "";
-    coin.style.animation = "flip 1s ease-in-out";
+    let result = document.getElementById("coin-result");
+    coin.classList.add("flip");
 
     setTimeout(() => {
-        let result = Math.random() < 0.5 ? "Heads" : "Tails";
-        resultText.textContent = `Result: ${result}`;
-        coin.style.animation = "none";
+        coin.classList.remove("flip");
+        let flipResult = Math.random() < 0.5 ? "Heads" : "Tails";
+        result.textContent = "Result: " + flipResult;
     }, 1000);
 }
 
-// Stats (Win/Loss)
-const teams = {
-    "Los Angeles Lakers": { wins: 55, losses: 27 },
-    "Boston Celtics": { wins: 60, losses: 22 },
-    "Chicago Bulls": { wins: 48, losses: 34 },
-    "Golden State Warriors": { wins: 52, losses: 30 }
-};
+// Populate NBA Teams Dropdown
+const teams = [
+    "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets", "Chicago Bulls", 
+    "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets", "Detroit Pistons", "Golden State Warriors",
+    "Houston Rockets", "Indiana Pacers", "LA Clippers", "Los Angeles Lakers", "Memphis Grizzlies",
+    "Miami Heat", "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks",
+    "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns", "Portland Trail Blazers",
+    "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors", "Utah Jazz", "Washington Wizards"
+];
 
-function populateTeamDropdown() {
-    let teamSelect = document.getElementById("teamSelect");
-    Object.keys(teams).forEach(team => {
+function populateTeams() {
+    let select = document.getElementById("team-select");
+    teams.forEach(team => {
         let option = document.createElement("option");
         option.value = team;
         option.textContent = team;
-        teamSelect.appendChild(option);
+        select.appendChild(option);
     });
-}
-
-function updateStats() {
-    let selectedTeam = document.getElementById("teamSelect").value;
-    if (selectedTeam) {
-        document.getElementById("teamWins").textContent = teams[selectedTeam].wins;
-        document.getElementById("teamLosses").textContent = teams[selectedTeam].losses;
-    }
 }
