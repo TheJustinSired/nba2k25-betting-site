@@ -49,7 +49,10 @@
             <h3>Coin Flip</h3>
             <button onclick="flipCoin()">Flip Coin</button>
             <div class="coin-container">
-                <div id="coin" class="coin"></div>
+                <div id="coin" class="coin">
+                    <div class="heads"></div>
+                    <div class="tails"></div>
+                </div>
             </div>
             <p id="coin-result"></p>
         </section>
@@ -59,7 +62,12 @@
             <h2>NBA Team Stats</h2>
             <label for="team-select">Select Team:</label>
             <select id="team-select"></select>
-            <div id="team-stats"></div>
+            <div id="team-stats" class="scoreboard">
+                <div class="team-name">Team Name</div>
+                <div class="score-box">
+                    <span id="wins">W: 0</span> | <span id="losses">L: 0</span>
+                </div>
+            </div>
         </section>
     </main>
 </body>
