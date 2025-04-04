@@ -1,3 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1E1E2D;
+    color: white;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #0D0D17;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Account Cards */
+.account-card {
+    background: #2A2A3C;
+    padding: 20px;
+    margin: 10px auto;
+    width: 50%;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Buttons */
+button {
+    background-color: #ffb100;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    border-radius: 5px;
+}
+
 /* Coin Flip Styling */
 .coin-container {
     display: flex;
