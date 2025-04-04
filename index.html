@@ -6,7 +6,6 @@
     <title>FNBA Financial</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -15,53 +14,61 @@
             <ul>
                 <li><a href="#" onclick="showTab('accounts')">Accounts</a></li>
                 <li><a href="#" onclick="showTab('betting')">Betting</a></li>
-                <li><a href="#" onclick="showTab('stocks')">Stocks</a></li>
+                <li><a href="#" onclick="showTab('stats')">Stats</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <!-- Accounts Tab -->
-        <section id="accounts" class="tab-content">
-            <h2>Account Summary</h2>
-            <div class="account-dashboard">
+        <section id="accounts" class="tab-content active">
+            <h2>Account Overview</h2>
+            <div class="account-container">
                 <div class="account-card">
                     <h3>Andon's Account</h3>
-                    <p class="balance">$<span id="andon-balance">1000</span></p>
-                    <h4>Recent Transactions</h4>
-                    <ul id="andon-transactions">
-                        <li>No transactions yet</li>
-                    </ul>
+                    <p>Account #: 8399093</p>
+                    <p>Balance: $<span id="andon-balance">1000</span></p>
+                    <button class="send-money">Send Money</button>
                 </div>
                 <div class="account-card">
                     <h3>Justin's Account</h3>
-                    <p class="balance">$<span id="justin-balance">1000</span></p>
-                    <h4>Recent Transactions</h4>
-                    <ul id="justin-transactions">
-                        <li>No transactions yet</li>
-                    </ul>
+                    <p>Account #: 8399131</p>
+                    <p>Balance: $<span id="justin-balance">1000</span></p>
+                    <button class="send-money">Send Money</button>
                 </div>
             </div>
         </section>
 
         <!-- Betting Tab -->
         <section id="betting" class="tab-content">
-            <h2>Betting</h2>
+            <h2>Place Your Bets</h2>
             <div class="betting-container">
-                <input type="text" id="matchup" placeholder="Matchup (e.g. Lakers vs Celtics)">
+                <input type="text" id="matchup" placeholder="Matchup">
                 <input type="text" id="andonBet" placeholder="Andon's Bet">
                 <input type="text" id="justinBet" placeholder="Justin's Bet">
                 <button onclick="addBet()">Place Bet</button>
-                <h3>Game Results</h3>
-                <input type="text" id="winner" placeholder="Winning Team">
-                <button onclick="updateResults()">Update Results</button>
             </div>
+            <h3>Game Results</h3>
+            <input type="text" id="winner" placeholder="Winning Team">
+            <button onclick="updateResults()">Update Results</button>
         </section>
 
-        <!-- Stocks Tab -->
-        <section id="stocks" class="tab-content">
-            <h2>NBA Team Stock Values</h2>
-            <canvas id="stockChart"></canvas>
+        <!-- Stats Tab -->
+        <section id="stats" class="tab-content">
+            <h2>NBA Team Stats</h2>
+            <select id="teamSelect" onchange="updateTeamStats()">
+                <option value="">Select a Team</option>
+                <option value="Lakers">Los Angeles Lakers</option>
+                <option value="Celtics">Boston Celtics</option>
+                <option value="Warriors">Golden State Warriors</option>
+                <option value="Bulls">Chicago Bulls</option>
+                <!-- Add more teams -->
+            </select>
+            <div id="teamStatsDisplay" class="scoreboard">
+                <h3 id="teamName"></h3>
+                <p>Wins: <span id="wins">0</span></p>
+                <p>Losses: <span id="losses">0</span></p>
+            </div>
         </section>
     </main>
 </body>
