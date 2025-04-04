@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Betting</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FNBA Financial</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1>NBA Betting</h1>
+        <img src="logo.png" alt="FNBA Financial Logo" class="logo"/>
         <nav>
             <ul>
                 <li><a href="#" onclick="showTab('accounts')">Accounts</a></li>
@@ -19,46 +20,81 @@
     </header>
 
     <main>
-        <section id="accounts" class="tab">
-            <h2>Accounts</h2>
-            <div class="account-card">
-                <img src="justin_card.png" alt="Justin's Card">
-                <p>Balance: <span id="justin-balance">$1000</span></p>
-            </div>
-            <div class="account-card">
-                <img src="andon_card.png" alt="Andon's Card">
-                <p>Balance: <span id="andon-balance">$1000</span></p>
-            </div>
-        </section>
-
-        <section id="betting" class="tab">
-            <h2>Betting</h2>
-            <button onclick="flipCoin()">Flip Coin</button>
-            <div id="coin-animation">
-                <div class="coin">
-                    <div class="heads"></div>
-                    <div class="tails"></div>
+        <section id="accounts" class="tab-content active">
+            <h2>Account Overview</h2>
+            <div class="account-cards">
+                <div class="card">
+                    <img src="justin-card.png" alt="Justin's Card" class="card-img"/>
+                    <div class="card-info">
+                        <p>Account No: 587-884-846</p>
+                        <p>Balance: $<span id="justin-balance">1000</span></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="andon-card.png" alt="Andon's Card" class="card-img"/>
+                    <div class="card-info">
+                        <p>Account No: 263-666-846</p>
+                        <p>Balance: $<span id="andon-balance">1000</span></p>
+                    </div>
                 </div>
             </div>
-            <p id="coin-result"></p>
         </section>
 
-        <section id="stats" class="tab">
-            <h2>NBA Team Stats</h2>
-            <select id="team-dropdown" onchange="updateStats()">
-                <option value="">Select a Team</option>
-                <option value="Lakers">Los Angeles Lakers</option>
-                <option value="Celtics">Boston Celtics</option>
-                <option value="Warriors">Golden State Warriors</option>
-                <!-- Add all NBA teams -->
+        <section id="betting" class="tab-content">
+            <h2>Betting</h2>
+            <input type="text" id="matchup" placeholder="Matchup"/>
+            <input type="text" id="andonBet" placeholder="Andon's Bet"/>
+            <input type="text" id="justinBet" placeholder="Justin's Bet"/>
+            <button onclick="addBet()">Place Bet</button>
+            <h3>Game Results</h3>
+            <input type="text" id="winner" placeholder="Winning Team"/>
+            <button onclick="updateResults()">Update Results</button>
+
+            <h3>Coin Flip</h3>
+            <div class="coin" id="coin"></div>
+            <button onclick="flipCoin()">Flip Coin</button>
+        </section>
+
+        <section id="stats" class="tab-content">
+            <h2>Team Stats</h2>
+            <select id="teamSelect">
+                <option>Select a team</option>
+                <!-- Add all current NBA teams -->
+                <option>Atlanta Hawks</option>
+                <option>Boston Celtics</option>
+                <option>Brooklyn Nets</option>
+                <option>Charlotte Hornets</option>
+                <option>Chicago Bulls</option>
+                <option>Cleveland Cavaliers</option>
+                <option>Dallas Mavericks</option>
+                <option>Denver Nuggets</option>
+                <option>Detroit Pistons</option>
+                <option>Golden State Warriors</option>
+                <option>Houston Rockets</option>
+                <option>Indiana Pacers</option>
+                <option>LA Clippers</option>
+                <option>Los Angeles Lakers</option>
+                <option>Memphis Grizzlies</option>
+                <option>Miami Heat</option>
+                <option>Milwaukee Bucks</option>
+                <option>Minnesota Timberwolves</option>
+                <option>New Orleans Pelicans</option>
+                <option>New York Knicks</option>
+                <option>Oklahoma City Thunder</option>
+                <option>Orlando Magic</option>
+                <option>Philadelphia 76ers</option>
+                <option>Phoenix Suns</option>
+                <option>Portland Trail Blazers</option>
+                <option>Sacramento Kings</option>
+                <option>San Antonio Spurs</option>
+                <option>Toronto Raptors</option>
+                <option>Utah Jazz</option>
+                <option>Washington Wizards</option>
             </select>
-            <div id="stats-display">
-                <p>Wins: <span id="wins">0</span></p>
-                <p>Losses: <span id="losses">0</span></p>
+            <div class="scoreboard" id="statsDisplay">
+                <!-- Stats display will go here -->
             </div>
         </section>
     </main>
-
-    <script src="script.js"></script>
 </body>
 </html>
