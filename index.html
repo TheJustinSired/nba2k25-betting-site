@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FNBA Financial</title>
+    <title>NBA Betting</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="FNBA Financial Logo" class="logo">
+        <h1>NBA Betting</h1>
         <nav>
             <ul>
                 <li><a href="#" onclick="showTab('accounts')">Accounts</a></li>
@@ -20,59 +19,46 @@
     </header>
 
     <main>
-        <!-- ACCOUNTS TAB -->
-        <section id="accounts" class="tab-content">
-            <h2>Account Overview</h2>
-            <div class="credit-card">
-                <div class="card-info">
-                    <h3>FNBA FINANCIAL</h3>
-                    <p class="card-number">**** **** **** 1234</p>
-                    <p>Cardholder: <strong>Andon</strong></p>
-                    <p>Balance: $<span id="andon-balance">1000</span></p>
-                    <p>Exp: 12/28 | CVV: ***</p>
-                </div>
+        <section id="accounts" class="tab">
+            <h2>Accounts</h2>
+            <div class="account-card">
+                <img src="justin_card.png" alt="Justin's Card">
+                <p>Balance: <span id="justin-balance">$1000</span></p>
             </div>
-            <div class="credit-card">
-                <div class="card-info">
-                    <h3>FNBA FINANCIAL</h3>
-                    <p class="card-number">**** **** **** 5678</p>
-                    <p>Cardholder: <strong>Justin</strong></p>
-                    <p>Balance: $<span id="justin-balance">1000</span></p>
-                    <p>Exp: 07/30 | CVV: ***</p>
-                </div>
+            <div class="account-card">
+                <img src="andon_card.png" alt="Andon's Card">
+                <p>Balance: <span id="andon-balance">$1000</span></p>
             </div>
         </section>
 
-        <!-- BETTING TAB -->
-        <section id="betting" class="tab-content">
-            <h2>Place Your Bets</h2>
-            <input type="text" id="matchup" placeholder="Matchup">
-            <input type="text" id="andonBet" placeholder="Andon's Bet">
-            <input type="text" id="justinBet" placeholder="Justin's Bet">
-            <button onclick="addBet()">Place Bet</button>
-
-            <h3>Game Results</h3>
-            <input type="text" id="winner" placeholder="Winning Team">
-            <button onclick="updateResults()">Update Results</button>
-
-            <h3>Coin Flip</h3>
-            <div id="coin-container">
-                <div id="coin" class="coin"></div>
-            </div>
+        <section id="betting" class="tab">
+            <h2>Betting</h2>
             <button onclick="flipCoin()">Flip Coin</button>
+            <div id="coin-animation">
+                <div class="coin">
+                    <div class="heads"></div>
+                    <div class="tails"></div>
+                </div>
+            </div>
             <p id="coin-result"></p>
         </section>
 
-        <!-- STATS TAB -->
-        <section id="stats" class="tab-content">
+        <section id="stats" class="tab">
             <h2>NBA Team Stats</h2>
-            <label for="team-dropdown">Select a Team:</label>
-            <select id="team-dropdown"></select>
-            <div id="scoreboard">
-                <h3 id="selected-team">-</h3>
-                <p>Wins: <span id="wins">0</span> | Losses: <span id="losses">0</span></p>
+            <select id="team-dropdown" onchange="updateStats()">
+                <option value="">Select a Team</option>
+                <option value="Lakers">Los Angeles Lakers</option>
+                <option value="Celtics">Boston Celtics</option>
+                <option value="Warriors">Golden State Warriors</option>
+                <!-- Add all NBA teams -->
+            </select>
+            <div id="stats-display">
+                <p>Wins: <span id="wins">0</span></p>
+                <p>Losses: <span id="losses">0</span></p>
             </div>
         </section>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
