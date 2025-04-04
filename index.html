@@ -20,53 +20,46 @@
     </header>
 
     <main>
-        <!-- Accounts Tab -->
+        <!-- Accounts Section -->
         <section id="accounts" class="tab-content">
-            <h2>Account Overview</h2>
+            <h2>Account Balances</h2>
             <div class="account-card">
-                <h3>Andon's Account</h3>
+                <h3>Andon</h3>
+                <p>Account #: 26366</p>
                 <p>Balance: $<span id="andon-balance">1000</span></p>
             </div>
             <div class="account-card">
-                <h3>Justin's Account</h3>
+                <h3>Justin</h3>
+                <p>Account #: 587846</p>
                 <p>Balance: $<span id="justin-balance">1000</span></p>
             </div>
         </section>
 
-        <!-- Betting Tab -->
+        <!-- Betting Section -->
         <section id="betting" class="tab-content">
-            <h2>Place Your Bets</h2>
-            <div class="betting-container">
-                <input type="text" id="matchup" placeholder="Matchup">
-                <input type="text" id="andonBet" placeholder="Andon's Bet">
-                <input type="text" id="justinBet" placeholder="Justin's Bet">
-                <button onclick="addBet()">Place Bet</button>
-            </div>
-
+            <h2>Betting</h2>
+            <input type="text" id="matchup" placeholder="Matchup">
+            <input type="text" id="andonBet" placeholder="Andon's Bet">
+            <input type="text" id="justinBet" placeholder="Justin's Bet">
+            <button onclick="addBet()">Place Bet</button>
             <h3>Game Results</h3>
             <input type="text" id="winner" placeholder="Winning Team">
             <button onclick="updateResults()">Update Results</button>
 
             <h3>Coin Flip</h3>
+            <button onclick="flipCoin()">Flip Coin</button>
             <div class="coin-container">
                 <div id="coin" class="coin"></div>
             </div>
-            <button onclick="flipCoin()">Flip Coin</button>
-            <p id="coinResult"></p>
+            <p id="coin-result"></p>
         </section>
 
-        <!-- Stats Tab -->
+        <!-- Stats Section -->
         <section id="stats" class="tab-content">
-            <h2>NBA Team Win/Loss Stats</h2>
-            <div class="stats-container">
-                <select id="teamSelect" onchange="updateStats()">
-                    <option value="" selected>Select a Team</option>
-                </select>
-                <div id="teamStats">
-                    <p>Wins: <span id="teamWins">0</span></p>
-                    <p>Losses: <span id="teamLosses">0</span></p>
-                </div>
-            </div>
+            <h2>NBA Team Stats</h2>
+            <label for="team-select">Select Team:</label>
+            <select id="team-select"></select>
+            <div id="team-stats"></div>
         </section>
     </main>
 </body>
