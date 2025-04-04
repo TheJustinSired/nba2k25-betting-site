@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNBA Financial</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="FNBA Financial Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showTab('accounts')">Accounts</a></li>
+                <li><a href="#" onclick="showTab('betting')">Betting</a></li>
+                <li><a href="#" onclick="showTab('stocks')">Stocks</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accounts" class="tab-content">
+            <h2>Account Balances</h2>
+            <p>Andon's Balance: $<span id="andon-balance">1000</span></p>
+            <p>Justin's Balance: $<span id="justin-balance">1000</span></p>
+        </section>
+
+        <section id="betting" class="tab-content">
+            <h2>Betting</h2>
+            <input type="text" id="matchup" placeholder="Matchup">
+            <input type="text" id="andonBet" placeholder="Andon's Bet">
+            <input type="text" id="justinBet" placeholder="Justin's Bet">
+            <button onclick="addBet()">Place Bet</button>
+            <h3>Game Results</h3>
+            <input type="text" id="winner" placeholder="Winning Team">
+            <button onclick="updateResults()">Update Results</button>
+        </section>
+
+        <section id="stocks" class="tab-content">
+            <h2>NBA Team Stock Values</h2>
+            <canvas id="stockChart"></canvas>
+        </section>
+    </main>
+
+</body>
+</html>
