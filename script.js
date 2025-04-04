@@ -1,26 +1,57 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     showTab('accounts');
 });
 
 function showTab(tabName) {
-    document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
-    document.getElementById(tabName).style.display = 'block';
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.getElementById(tabName).classList.add('active');
 }
 
-function updateStats() {
-    let team = document.getElementById("team-dropdown").value;
-    if (team) {
-        fetchRealTimeStats(team);
-    }
+let balances = { andon: 1000, justin: 1000 };
+
+function addBet() {
+    balances.andon -= 100;
+    balances.justin -= 100;
+    updateBalances();
 }
 
-function fetchRealTimeStats(team) {
-    // Placeholder: You need to fetch real NBA stats
-    document.getElementById("wins").innerText = Math.floor(Math.random() * 50);
-    document.getElementById("losses").innerText = Math.floor(Math.random() * 50);
+function updateResults() {
+    balances.andon += 200;
+    balances.justin += 200;
+    updateBalances();
+}
+
+function updateBalances() {
+    document.getElementById("andon-balance").textContent = balances.andon;
+    document.getElementById("justin-balance").textContent = balances.justin;
 }
 
 function flipCoin() {
-    let result = Math.random() < 0.5 ? "Heads" : "Tails";
-    document.getElementById("coin-result").innerText = "Result: " + result;
+    const coin = document.getElementById("coin");
+    const heads = Math.random() < 0.5;
+    coin.style.transform = "rotateY(1800deg)";
+    setTimeout(() => {
+        coin.style.backgroundImage = `url('${heads ? "coin-heads.png" : "coin-tails.png"}')`;
+    }, 1000);
 }
+
+document.getElementById("teamSelect").addEventListener("change", function () {
+    const team = this.value;
+    const stats = {
+        "Toronto Raptors": "42 - 40",
+        "Golden State Warriors": "48 - 34",
+        "Los Angeles Lakers": "51 - 31",
+        "Milwaukee Bucks": "55 - 27"
+        // Add other teams and update accordingly
+    };
+
+    const record = stats[team] || "Data not available";
+    document.getElementById("statsDisplay").innerHTML = `
+        <div class="scoreboard">
+            <p>${team}</p>
+            <p>Record: ${record}</p>
+        </div>
+    `;
+});
