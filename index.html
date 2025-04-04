@@ -1,83 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FNBA Financial</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-</head>
-<body>
-    <header>
-        <img src="logo.png" alt="FNBA Financial Logo" class="logo">
-        <nav>
-            <ul>
-                <li><a href="#" onclick="showTab('accounts')">Accounts</a></li>
-                <li><a href="#" onclick="showTab('betting')">Betting</a></li>
-                <li><a href="#" onclick="showTab('stats')">Stats</a></li>
-            </ul>
-        </nav>
-    </header>
+<section id="betting" class="tab-content">
+    <h2>Place Your Bets</h2>
+    <div class="betting-container">
+        <input type="text" id="matchup" placeholder="Matchup">
+        <input type="text" id="andonBet" placeholder="Andon's Bet">
+        <input type="text" id="justinBet" placeholder="Justin's Bet">
+        <button onclick="addBet()">Place Bet</button>
+    </div>
 
-    <main>
-        <!-- Accounts Tab -->
-        <section id="accounts" class="tab-content active">
-            <h2>Account Overview</h2>
-            <div class="account-container">
-                <div class="account-card">
-                    <h3>Andon's Account</h3>
-                    <p>Account #: 26366</p>
-                    <p>Balance: $<span id="andon-balance">1000</span></p>
-                </div>
-                <div class="account-card">
-                    <h3>Justin's Account</h3>
-                    <p>Account #: 587846</p>
-                    <p>Balance: $<span id="justin-balance">1000</span></p>
-                </div>
-            </div>
-        </section>
+    <h3>Game Results</h3>
+    <input type="text" id="winner" placeholder="Winning Team">
+    <button onclick="updateResults()">Update Results</button>
 
-        <!-- Betting Tab -->
-        <section id="betting" class="tab-content">
-            <h2>Place Your Bets</h2>
-            <div class="betting-container">
-                <input type="text" id="matchup" placeholder="Matchup">
-                <input type="text" id="andonBet" placeholder="Andon's Bet">
-                <input type="text" id="justinBet" placeholder="Justin's Bet">
-                <button onclick="addBet()">Place Bet</button>
-            </div>
-            <h3>Game Results</h3>
-            <input type="text" id="winner" placeholder="Winning Team">
-            <button onclick="updateResults()">Update Results</button>
-        </section>
-
-        <!-- Stats Tab -->
-        <section id="stats" class="tab-content">
-            <h2>NBA Team Stats</h2>
-            <select id="teamSelect" onchange="updateTeamStats()">
-                <option value="">Select a Team</option>
-                <script>
-                    const teams = [
-                        "Atlanta Hawks", "Boston Celtics", "Brooklyn Nets", "Charlotte Hornets",
-                        "Chicago Bulls", "Cleveland Cavaliers", "Dallas Mavericks", "Denver Nuggets",
-                        "Detroit Pistons", "Golden State Warriors", "Houston Rockets", "Indiana Pacers",
-                        "LA Clippers", "Los Angeles Lakers", "Memphis Grizzlies", "Miami Heat",
-                        "Milwaukee Bucks", "Minnesota Timberwolves", "New Orleans Pelicans", "New York Knicks",
-                        "Oklahoma City Thunder", "Orlando Magic", "Philadelphia 76ers", "Phoenix Suns",
-                        "Portland Trail Blazers", "Sacramento Kings", "San Antonio Spurs", "Toronto Raptors",
-                        "Utah Jazz", "Washington Wizards"
-                    ];
-                    teams.forEach(team => {
-                        document.write(`<option value="${team}">${team}</option>`);
-                    });
-                </script>
-            </select>
-            <div id="teamStatsDisplay" class="scoreboard">
-                <h3 id="teamName"></h3>
-                <p>Wins: <span id="wins">0</span></p>
-                <p>Losses: <span id="losses">0</span></p>
-            </div>
-        </section>
-    </main>
-</body>
-</html>
+    <h3>Coin Flip</h3>
+    <div class="coin-container">
+        <div id="coin" class="coin"></div>
+    </div>
+    <button onclick="flipCoin()">Flip Coin</button>
+    <p id="coinResult"></p>
+</section>
