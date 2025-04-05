@@ -1,26 +1,21 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     showTab('accounts');
 });
 
 function showTab(tabName) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.style.display = 'none';
-    });
+    let tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.style.display = 'none');
     document.getElementById(tabName).style.display = 'block';
 }
 
 function flipCoin() {
     const coin = document.getElementById("coin");
-    const resultText = document.getElementById("coin-result");
     const isHeads = Math.random() > 0.5;
 
     coin.style.transform = "rotateY(1800deg)";
-    resultText.textContent = "Flipping...";
-
     setTimeout(() => {
         coin.style.backgroundImage = isHeads ? "url('heads.png')" : "url('tails.png')";
         coin.style.transform = "rotateY(0deg)";
-        resultText.textContent = isHeads ? "Result: Heads" : "Result: Tails";
     }, 1000);
 }
 
@@ -41,19 +36,19 @@ const teamStats = {
     "la_lakers": { wins: 6, losses: 3 },
     "memphis": { wins: 3, losses: 7 },
     "miami": { wins: 7, losses: 2 },
-    "milwaukee": { wins: 6, losses: 4 },
-    "minnesota": { wins: 5, losses: 4 },
-    "new_orleans": { wins: 6, losses: 3 },
-    "new_york": { wins: 7, losses: 2 },
-    "oklahoma": { wins: 4, losses: 5 },
-    "orlando": { wins: 6, losses: 4 },
-    "philadelphia": { wins: 5, losses: 5 },
-    "phoenix": { wins: 8, losses: 2 },
-    "portland": { wins: 2, losses: 7 },
-    "sacramento": { wins: 6, losses: 3 },
-    "san_antonio": { wins: 3, losses: 6 },
-    "toronto": { wins: 4, losses: 6 },
-    "utah": { wins: 3, losses: 7 },
+    "milwaukee": { wins: 7, losses: 3 },
+    "minnesota": { wins: 6, losses: 4 },
+    "new_orleans": { wins: 4, losses: 6 },
+    "new_york": { wins: 6, losses: 4 },
+    "oklahoma": { wins: 5, losses: 5 },
+    "orlando": { wins: 4, losses: 6 },
+    "philadelphia": { wins: 8, losses: 2 },
+    "phoenix": { wins: 6, losses: 4 },
+    "portland": { wins: 2, losses: 8 },
+    "sacramento": { wins: 5, losses: 5 },
+    "san_antonio": { wins: 3, losses: 7 },
+    "toronto": { wins: 5, losses: 5 },
+    "utah": { wins: 4, losses: 6 },
     "washington": { wins: 2, losses: 8 }
 };
 
