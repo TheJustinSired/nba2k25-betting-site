@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FNBA Financial</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -20,10 +21,12 @@
     <section id="accounts" class="tab-content">
         <div class="account-card">
             <img src="justin_card.png" alt="Justin's Card">
+            <p>Account #: 587-884-6278 (JUSTIN)</p>
             <p>Balance: $<span id="justin-balance">1000</span></p>
         </div>
         <div class="account-card">
             <img src="andon_card.png" alt="Andon's Card">
+            <p>Account #: 263-636-6266 (ANDON)</p>
             <p>Balance: $<span id="andon-balance">1000</span></p>
         </div>
     </section>
@@ -33,6 +36,7 @@
         <div id="coin-container">
             <div id="coin" class="coin"></div>
         </div>
+        <p id="coin-result">Click to Flip</p>
         <button onclick="flipCoin()">Flip Coin</button>
     </section>
 
@@ -40,6 +44,7 @@
         <h2>Fantasy Tournament Stats</h2>
         <label for="team-select">Select Team:</label>
         <select id="team-select" onchange="updateStats()">
+            <!-- All 30 NBA teams -->
             <option value="atlanta">Atlanta Hawks</option>
             <option value="boston">Boston Celtics</option>
             <option value="brooklyn">Brooklyn Nets</option>
@@ -52,8 +57,8 @@
             <option value="golden_state">Golden State Warriors</option>
             <option value="houston">Houston Rockets</option>
             <option value="indiana">Indiana Pacers</option>
-            <option value="la_clippers">Los Angeles Clippers</option>
-            <option value="la_lakers">Los Angeles Lakers</option>
+            <option value="la_clippers">LA Clippers</option>
+            <option value="la_lakers">LA Lakers</option>
             <option value="memphis">Memphis Grizzlies</option>
             <option value="miami">Miami Heat</option>
             <option value="milwaukee">Milwaukee Bucks</option>
