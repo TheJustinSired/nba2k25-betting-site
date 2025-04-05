@@ -1,95 +1,70 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1E1E2D;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #121212;
     color: white;
 }
 
 header {
-    background-color: #0D0D17;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #222;
+    padding: 20px;
 }
 
-.logo {
-    width: 100px;
+nav {
+    margin: 20px;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li a {
+.tab-button {
+    padding: 10px 20px;
+    margin: 5px;
+    background: #444;
     color: white;
-    text-decoration: none;
-    font-weight: bold;
+    border: none;
+    cursor: pointer;
 }
 
 .tab-content {
     display: none;
-    padding: 20px;
 }
 
-.tab-content.active {
-    display: block;
-}
-
-.account-cards {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.card {
-    background-color: #2E2E3A;
-    padding: 15px;
-    border-radius: 15px;
-    width: 320px;
-    text-align: center;
-}
-
-.card-img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.card-info {
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-button {
-    background-color: #ffb100;
-    border: none;
-    padding: 10px 15px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    color: black;
+#coin-container {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    position: relative;
 }
 
 .coin {
     width: 100px;
     height: 100px;
-    background-image: url('coin-heads.png');
     background-size: cover;
-    margin: 20px auto;
-    transition: transform 1s;
+    background-image: url('heads.png');
+    transition: transform 1s ease-in-out;
 }
 
-.scoreboard {
-    margin-top: 20px;
+.account-card {
+    background-color: #333;
     padding: 20px;
-    background-color: #00000090;
-    border: 2px solid #ffb100;
-    border-radius: 10px;
-    font-size: 20px;
+    margin: 10px;
+    display: inline-block;
+}
+
+#scoreboard {
+    position: relative;
+    margin-top: 20px;
+}
+
+#scoreboard-image {
+    width: 600px;
+}
+
+#team-stats {
+    font-size: 24px;
+    font-weight: bold;
+    color: yellow;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'NBA Font', sans-serif;
 }
