@@ -1,57 +1,44 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     showTab('accounts');
 });
 
 function showTab(tabName) {
-    document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.getElementById(tabName).classList.add('active');
-}
-
-let balances = { andon: 1000, justin: 1000 };
-
-function addBet() {
-    balances.andon -= 100;
-    balances.justin -= 100;
-    updateBalances();
-}
-
-function updateResults() {
-    balances.andon += 200;
-    balances.justin += 200;
-    updateBalances();
-}
-
-function updateBalances() {
-    document.getElementById("andon-balance").textContent = balances.andon;
-    document.getElementById("justin-balance").textContent = balances.justin;
+    let tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.style.display = 'none');
+    document.getElementById(tabName).style.display = 'block';
 }
 
 function flipCoin() {
-    const coin = document.getElementById("coin");
-    const heads = Math.random() < 0.5;
+    let coin = document.getElementById("coin");
+    let isHeads = Math.random() > 0.5;
     coin.style.transform = "rotateY(1800deg)";
     setTimeout(() => {
-        coin.style.backgroundImage = `url('${heads ? "coin-heads.png" : "coin-tails.png"}')`;
+        coin.style.backgroundImage = isHeads ? "url('heads.png')" : "url('tails.png')";
+        coin.style.transform = "rotateY(0deg)";
     }, 1000);
 }
 
-document.getElementById("teamSelect").addEventListener("change", function () {
-    const team = this.value;
-    const stats = {
-        "Toronto Raptors": "42 - 40",
-        "Golden State Warriors": "48 - 34",
-        "Los Angeles Lakers": "51 - 31",
-        "Milwaukee Bucks": "55 - 27"
-        // Add other teams and update accordingly
-    };
+const teamStats = {
+    "atlanta": { wins: 5, losses: 3 },
+    "boston": { wins: 7, losses: 2 },
+    "brooklyn": { wins: 4, losses: 5 },
+    "charlotte": { wins: 3, losses: 6 },
+    "chicago": { wins: 6, losses: 4 },
+    "cleveland": { wins: 8, losses: 1 },
+    "dallas": { wins: 5, losses: 5 },
+    "denver": { wins: 9, losses: 0 },
+    "detroit": { wins: 2, losses: 8 },
+    "golden_state": { wins: 6, losses: 3 },
+    "houston": { wins: 3, losses: 6 },
+    "indiana": { wins: 4, losses: 5 },
+    "la_clippers": { wins: 5, losses: 5 },
+    "la_lakers": { wins: 6, losses: 3 },
+    "memphis": { wins: 3, losses: 7 },
+    "miami": { wins: 7, losses: 2 },
+};
 
-    const record = stats[team] || "Data not available";
-    document.getElementById("statsDisplay").innerHTML = `
-        <div class="scoreboard">
-            <p>${team}</p>
-            <p>Record: ${record}</p>
-        </div>
-    `;
-});
+function updateStats() {
+    let team = document.getElementById("team-select").value;
+    let stats = teamStats[team] || { wins: 0, losses: 0 };
+    document.getElementById("team-stats").innerText = `Wins: ${stats.wins} | Losses: ${stats.losses}`;
+}
