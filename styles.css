@@ -1,14 +1,19 @@
 body {
     font-family: Arial, sans-serif;
+    text-align: center;
     background-color: #121212;
     color: white;
     margin: 0;
-    text-align: center;
 }
 
 header {
     background: #222;
     padding: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
 }
 
 nav {
@@ -22,10 +27,12 @@ nav {
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .tab-content {
     display: none;
+    padding: 20px;
 }
 
 .account-card {
@@ -33,21 +40,21 @@ nav {
     padding: 20px;
     margin: 10px;
     display: inline-block;
-    width: 300px;
     border-radius: 10px;
+    width: 300px;
 }
 
 .account-card img {
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 10px;
 }
 
 #coin-container {
     width: 100px;
     height: 100px;
-    margin: 20px auto;
+    margin: auto;
     position: relative;
+    perspective: 1000px;
 }
 
 .coin {
@@ -58,11 +65,6 @@ nav {
     transition: transform 1s ease-in-out;
 }
 
-#coin-result {
-    margin: 10px;
-    font-size: 20px;
-}
-
 #scoreboard {
     position: relative;
     margin-top: 20px;
@@ -70,15 +72,16 @@ nav {
 
 #scoreboard-image {
     width: 600px;
+    max-width: 100%;
 }
 
 #team-stats {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 28px;
+    font-family: 'Impact', sans-serif;
+    font-size: 40px;
     font-weight: bold;
     color: yellow;
     position: absolute;
-    top: 30px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
 }
