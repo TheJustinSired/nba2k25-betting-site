@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     background-color: #121212;
     color: white;
+    margin: 0;
+    text-align: center;
 }
 
 header {
@@ -27,10 +28,25 @@ nav {
     display: none;
 }
 
+.account-card {
+    background-color: #333;
+    padding: 20px;
+    margin: 10px;
+    display: inline-block;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.account-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
 #coin-container {
     width: 100px;
     height: 100px;
-    margin: auto;
+    margin: 20px auto;
     position: relative;
 }
 
@@ -42,11 +58,9 @@ nav {
     transition: transform 1s ease-in-out;
 }
 
-.account-card {
-    background-color: #333;
-    padding: 20px;
+#coin-result {
     margin: 10px;
-    display: inline-block;
+    font-size: 20px;
 }
 
 #scoreboard {
@@ -59,12 +73,12 @@ nav {
 }
 
 #team-stats {
-    font-size: 24px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
     font-weight: bold;
     color: yellow;
     position: absolute;
     top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'NBA Font', sans-serif;
 }
